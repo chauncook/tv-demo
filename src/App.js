@@ -11,14 +11,26 @@ class App extends Component {
         name: 'Sons of Anarchy',
         rating: 5,
         previewImage: 'https://images5.alphacoders.com/300/thumb-350-300095.jpg'
+      },
+      {
+        name: 'Vikings',
+        rating: 5,
+        previewImage: 'https://images5.alphacoders.com/300/thumb-350-300095.jpg'
+      },
+      {
+        name: 'Game Of Thrones',
+        rating: 5,
+        previewImage: 'https://images5.alphacoders.com/300/thumb-350-300095.jpg'
       }
     ]
   }
+
 
   createShow = (show) => {
     this.setState((previousState) => {
       const existingShows = previousState.shows
       existingShows.push(show)
+      
       return {
         shows: existingShows
       }

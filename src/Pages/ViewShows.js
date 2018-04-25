@@ -11,8 +11,14 @@ export default class ViewShows extends Component {
     
 
     renderShows = () => {
-        return this.props.allShows.map((show) => {
-            return <Show name={show.name} rating={show.rating} previewImage={show.previewImage}/>
+        const nonMatureShows = this.props.allShows.filter((show) => {
+            return show.rating < 5
+        })
+        
+        return nonMatureShows.map((show) => {
+            return (
+            <Show name={show.name} rating={show.rating} previewImage={show.previewImage}/>
+            )
         })
     }
 
