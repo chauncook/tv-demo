@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import ReactPropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Show from '../Show'
 import './ManageShows.css'
 
 export default class ManageShows extends Component {
-static propTypes = {
-   createShow: ReactPropTypes.func.isRequired
-}
+    static propTypes = {
+        createShow: ReactPropTypes.func.isRequired
+    }
 
     state = {
         show: {
@@ -50,6 +50,8 @@ static propTypes = {
     }
 
 
+
+
     renderShows = () => {
         // const showComponents = []
 
@@ -77,16 +79,28 @@ static propTypes = {
         })
     }
 
+    getAvgRating = () => {
+        const sumOfRatings = this.props.allShows.reduce((accumulator, show) => {
+            console.log("getAvgRating(ass,show) -> return", accumulator)
+            return show.rating + accumulator
+        }, 0)
+
+        return sumOfRatings / this.props.allShows.length
+    }
+
     render() {
         console.log(this.state)
         return (
             <div className='manageShows'>
                 <section className="viewAllShows">
-                    <header><h1>All Shows</h1></header>
+                    <header>
+                        <h1>All Shows</h1>
+                        <p>Avg Rating: {this.getAvgRating()}</p>
+                    </header>
                     <div>
                         {this.renderShows()}
                     </div>
-                    <Link to ="/">View Shows</Link>
+                    <Link to="/">View Shows</Link>
                 </section>
                 <section className="createShow">
                     <header><h1>New Show</h1></header>
